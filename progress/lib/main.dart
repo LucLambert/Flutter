@@ -86,35 +86,84 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: GridView.count(
+        // Create a grid with 2 columns. If you change the scrollDirection to
+        // horizontal, this produces 2 rows.
+        crossAxisCount: 7,
+        // Generate 100 widgets that display their index in the List.
+        children: List.generate(24*7, (index) {
+          switch(index){
+            case 0:
+              return Center(
+                child: Text(
+                  'Lun.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 1:
+              return Center(
+                child: Text(
+                  'Mar.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 2:
+              return Center(
+                child: Text(
+                  'Mer.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 3:
+              return Center(
+                child: Text(
+                  'Jeu.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 4:
+              return Center(
+                child: Text(
+                  'Ven.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 5:
+              return Center(
+                child: Text(
+                  'Sam.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            case 6:
+              return Center(
+                child: Text(
+                  'Dim.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
+            default :
+              if(index%7 == 0){
+                double hour = index/7;
+                return Center(
+                  child: Text(
+                    '$hour',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                );
+              }else{
+                return Center(
+                  child: Text(
+                    'Item $index',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                );
+              }
+              
+          }
+        }),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
